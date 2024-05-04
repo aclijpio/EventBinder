@@ -1,33 +1,19 @@
 package com.github.aclijpio.event.process;
 
+import com.github.aclijpio.event.process.action.ActionCollection;
 import org.apache.commons.exec.CommandLine;
 
-public class WindowsCommandExecutor implements CommandExecutor{
-    private static final CommandLine commandLine = new CommandLine("cmd /c");
+public class WindowsCommandExecutor extends CommandExecutor {
+    public final CommandLine commandLine = new CommandLine("cmd /c");
+
+    protected WindowsCommandExecutor(CommandLine commandLine) {
+        super(commandLine);
+    }
+
     @Override
-    public Object execute() {
-
-
-
+    public Object execute(ActionCollection action) {
 
         return null;
     }
 
-
-/*    public void test() {
-        CommandLine commandLine = new CommandLine("cmd");
-        commandLine.addArgument("/c");
-        commandLine.addArgument("echo");
-        commandLine.addArgument("Hello");
-        commandLine.addArgument("World");
-
-        DefaultExecutor executor = new DefaultExecutor.Builder<>().get();
-
-        executor.setExitValue(0);
-        try {
-            executor.execute(commandLine);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }*/
 }
