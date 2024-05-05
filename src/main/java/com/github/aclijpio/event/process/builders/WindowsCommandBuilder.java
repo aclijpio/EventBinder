@@ -13,6 +13,10 @@ public class WindowsCommandBuilder implements CommandBuilder{
         commandLine.addArgument(WindowsCMD.ECHO.get() + text);
         return this;
     }
+    public WindowsCommandBuilder and(){
+        commandLine.addArgument("&");
+        return this;
+    }
     @Override
     public CommandChain build(){
         return new CommandChain(commandLine);

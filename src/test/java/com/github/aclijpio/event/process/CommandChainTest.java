@@ -52,10 +52,10 @@ class CommandChainTest {
     void executeCommandChainEchoDouble() {
         CommandChain commandChain = new WindowsCommand().builder(windowsCommandBuilder -> windowsCommandBuilder
                 .echo("first Text")
-                .echo("second Text")
+                .and()
                 .build());
         commandChain.execute(defaultExecutor, resultHandler);
-        Assertions.assertEquals("Test with exit value", outputStream.toString().trim());
+        Assertions.assertEquals("first Text", outputStream.toString().trim());
         Assertions.assertEquals(0, resultHandler.getExitValue());
     }
 }
