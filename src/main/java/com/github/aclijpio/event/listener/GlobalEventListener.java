@@ -1,8 +1,8 @@
 package com.github.aclijpio.event.listener;
 
 
-import com.github.aclijpio.event.EventList;
 import com.github.aclijpio.event.Event;
+import com.github.aclijpio.event.EventList;
 import com.github.aclijpio.event.listener.screens.GlobalScreenListener;
 
 public class GlobalEventListener implements EventListener{
