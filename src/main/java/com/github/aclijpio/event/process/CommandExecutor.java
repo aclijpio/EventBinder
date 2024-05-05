@@ -1,24 +1,11 @@
 package com.github.aclijpio.event.process;
 
 
-import com.github.aclijpio.event.process.action.ActionCollection;
-import org.apache.commons.exec.CommandLine;
+import com.github.aclijpio.event.process.builders.CommandBuilder;
 
-public abstract class CommandExecutor {
+import java.util.function.Consumer;
 
-    private final CommandLine commandLine;
+public interface CommandExecutor<T extends CommandBuilder>{
 
-    protected CommandExecutor(CommandLine commandLine) {
-        this.commandLine = commandLine;
-    }
-
-
-    abstract Object execute(ActionCollection action);
-
-    private void applyAction(final ActionCollection actions){
-        for (String action  : actions.getActions()) {
-            commandLine.addArgument(action);
-        }
-    }
-
+    CommandChain builder(Consumer<T> consumer);
 }
