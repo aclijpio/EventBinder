@@ -7,9 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 class CommandChainTest {
@@ -47,6 +45,21 @@ class CommandChainTest {
                 .echo("3")
                 .build());
         commandChain.execute(defaultExecutor);
-        Assertions.assertEquals("1\n2\n3", outputStream.toString().trim());
+        Assertions.assertEquals("1\r\n2\r\n3", outputStream.toString().trim());
     }
+    @Test
+    void executeCommandStartProcess(){
+        CommandChain commandChain = new WindowsCommand().builder(windowsCommandBuilder -> windowsCommandBuilder
+                .start("C:\\Users\\spawk\\apps\\steam\\Steam.exe"));
+        commandChain.execute(defaultExecutor);
+    }
+    @Test
+    void executeCommandStartProcessDouble(){
+        CommandChain commandChain = new WindowsCommand().builder(windowsCommandBuilder -> windowsCommandBuilder
+                .start("C:\\Users\\spawk\\apps\\steam\\Steam.exe")
+                .start("steam://rungameid/2923300"));
+        commandChain.execute(defaultExecutor);
+    }
+
+
 }

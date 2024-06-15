@@ -11,16 +11,18 @@ public class WindowsCommandBuilder implements CommandBuilder{
     List<CommandLine> commandLines = new ArrayList<>();
 
 
-    //Ref
-
-
-
     private CommandLine getDefaultCommandLine(){
         return new CommandLine("cmd").addArgument("/c");
     }
 
     public WindowsCommandBuilder echo(final String text) {
         CommandLine command = getDefaultCommandLine().addArgument(WindowsCMD.ECHO.get() + text);
+
+        addCommand(command);
+        return this;
+    }
+    public WindowsCommandBuilder start(final String text) {
+        CommandLine command = getDefaultCommandLine().addArgument(WindowsCMD.OPEN.get() + text);
 
         addCommand(command);
         return this;

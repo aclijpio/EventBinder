@@ -7,6 +7,12 @@ public enum WindowsCMD {
         public String get() {
             return "echo ";
         }
+    },
+    OPEN(){
+        @Override
+        public String get(){
+            return "start ";
+        }
     };
 
     abstract public String get();

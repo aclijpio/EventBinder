@@ -11,7 +11,6 @@ public class EventCreator {
 
     public void create(Event event){
 
-
     }
 
 }
